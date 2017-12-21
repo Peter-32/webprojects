@@ -1,0 +1,54 @@
+<!-- Top nav Title.  Changes based on top nav choice -->
+<div class="card">
+  <div id="title"><h1>Projects</h1></div>
+</div>
+<!-- Float left nav -->
+<div id="left-nav"></div>
+<!-- Float right nav -->
+<div id="right-nav"></div>
+<!-- Main content -->
+<div id="main-content">
+  <div class="container">
+    <h2>Find π to the N Decimal Places</h2>
+    <p>Found this algorithm on the <a href="https://docs.python.org/2/library/decimal.html">Python docs</a>.</p>
+    <label>N:</label><br>
+    <input type="text" name="pi_n" id="pi_n" value="100">
+    <button id="pi_button" onclick=>Calculate</button>
+    <button id="pi_max_button" onclick=>Max Value</button>
+    <div id="pi_output" class="wrapped_content"></div>
+    <br><br>
+    <h2>Find e to the N Decimal Places</h2>
+    <p>Found this algorithm on the <a href="https://docs.python.org/2/library/decimal.html">Python docs</a>.</p>
+    <label>N:</label><br>
+    <input type="text" name="e_n" id="e_n" value="100">
+    <button id="e_button" onclick=>Calculate</button>
+    <button id="e_max_button" onclick=>Max Value</button>
+    <div id="e_output" class="wrapped_content"></div>
+    <br><br>
+    <h2>Find N Fibonacci Numbers</h2>
+    <label>N:</label><br>
+    <input type="text" name="fibo_n" id="fibo_n" value="30">
+    <button id="fibo_button" onclick=>Calculate</button>
+    <button id="fibo_max_button" onclick=>Max Value</button>
+    <div id="fibo_output" class="wrapped_content"></div>
+    <br><br>
+    <h2>Find the Prime Factorization of N</h2>
+    <label>N:</label><br>
+    <input type="text" name="prime_factorization_n" id="prime_factorization_n" value="125">
+    <button id="prime_factorization_button" onclick=>Calculate</button>
+    <button id="prime_factorization_max_button" onclick=>Max Value</button>
+    <div id="prime_factorization_output" class="wrapped_content"></div>
+
+    <h2>Find the Next Prime Number after N</h2>
+    <br>
+    <div id="next_prime_slidecontainer_n">
+      <input type="range" min="1" max="9000000000000000" value="300" class="slider" id="next_prime_slider_n">
+      <label>N:</label><div id="next_prime_n_display"></div>
+    </div>
+    <button id="next_prime_button" onclick=>Calculate</button><br>
+    <label>The next prime is:</label><div id="next_prime_output" class="wrapped_content"></div>
+
+
+    <br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br>
+  </div>
+</div>

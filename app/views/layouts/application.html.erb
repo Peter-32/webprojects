@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Blog</title>
+    <%= csrf_meta_tags %>
+    <!-- Taken from the Bootstrap Website -->
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="keywords" content="Web Projects" />
+
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-alpha.6/css/bootstrap.min.css" integrity="sha384-rwoIResjU2yc3z8GV/NPeZWAv56rSmLldC3R/AZzGRnGxQQKnKkoFVhFQhNUwEyJ" crossorigin="anonymous">
+    <!-- vis.js -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/vis/4.20.1/vis.min.css">
+      <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track' => true %>
+
+  </head>
+
+  <body ng-app="theApp" class="<%= controller_name %> <%= action_name %>">
+
+    <!-- Top nav bar -->
+    <nav class="navbar navbar-toggleable navbar-light bg-faded">
+      <div class="container nav_adjustment" id="buttons-div">
+
+      <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavAltMarkup" aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
+        <div class="navbar-nav">
+          <%= link_to "Projects", projects_path, id: "nav_projects", class: "nav-item nav-link" %>
+          <%= link_to "Algorithm Problems", articles_path, id: "nav_articles", class: "nav-item nav-link" %>
+          <%= link_to "Contact", contact_path, id: "nav_contact", class: "nav-item nav-link" %>
+        </div>
+          <!-- <a class="nav-item nav-link disabled" href="">Disabled</a> -->
+        </div>
+      </div>
+    </nav>
+
+
+
+    <%= yield %>
+
+
+
+
+    <!-- Block drawing at footer -->
+      <div class="center"><p>Copyright © 2017</p></div>
+    <footer class="clear">
+
+      <svg id="header_svg" width="100%" height="100%">
+
+         <!-- Define the pattern -->
+         <pattern id="pattern-cubes" x="0" y="126" patternUnits="userSpaceOnUse" width="126" height="200" viewBox="0 0 10 16">
+
+           <!-- Cube code courtest of SVGeneration: http://www.svgeneration.com/recipes/3D-Cubes/ -->
+           <g id="cube">
+             <!-- We'll apply the `fill` in the CSS for flexibility -->
+             <path class="left-shade" d="M0 0l5 3v5l-5 -3z" />
+             <path class="right-shade" d="M10 0l-5 3v5l5 -3" />
+           </g>
+
+           <!-- Apply the cube shapes -->
+           <use x="5" y="8" xlink:href="#cube" />
+           <use x="-5" y="8" xlink:href="#cube" />
+
+         </pattern>
+
+         <!-- The canvas for our pattern -->
+         <rect x="0" y="0" width="100%" height="100%" fill="url(#pattern-cubes)" />
+         <rect x="0" y="0" width="100%" height="26px" fill="#ffffff" />
+
+      </svg>
+    </footer>
+
+    <!-- bootstrap and jQuery -->
+    <script src="https://code.jquery.com/jquery-3.1.1.slim.min.js" integrity="sha384-A7FZj7v+d/sdmMqp/nOQwliLvUsJfDHW+k9Omg/a/EheAdgtzNs3hpfag6Ed950n" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/tether/1.4.0/js/tether.min.js" integrity="sha384-DztdAPBWPRXSA/3eYEEUWrWCy7G5KFbe8fFjk5JAIxUYHKkDx6Qin1DkWx51bBrb" crossorigin="anonymous"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-alpha.6/js/bootstrap.min.js" integrity="sha384-vBWWzlZJ8ea9aCX4pEW3rVHjgjt7zpkNpZk+02D9phzyeVkE+jo0ieGizqPLForn" crossorigin="anonymous"></script>
+    <!-- d3 -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/d3/4.10.0/d3.js"></script>
+  <!-- angular -->
+  <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.5.6/angular.min.js"></script>
+  <!-- vis.js -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/vis/4.20.1/vis.min.js"></script>
+    <%= javascript_include_tag 'application', 'data-turbolinks-track' => true %>
+  </body>
+</html>

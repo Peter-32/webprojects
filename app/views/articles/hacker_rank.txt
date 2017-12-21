@@ -1,0 +1,246 @@
+
+
+
+
+## Ema's Supercomputer
+
+[Explanation here](https://www.hackerrank.com/challenges/two-pluses/problem)
+
+      #!/bin/ruby
+
+      arr = []
+
+      def howMany(arr, y, x, direction)
+      count = 0
+      if direction == 'down'
+          y = y + 1 # one down
+          while y <= arr.length-1
+              if arr[y][x] == "G"
+                  count+=1
+              else
+                  break # B found
+              end
+              y+=1
+          end
+      elsif direction == 'up'
+          y = y - 1 # one up
+          while y >= 0
+              if arr[y][x] == "G"
+                  count+=1
+              else
+                  break # B found
+              end
+              y-=1
+          end
+      elsif direction == 'right'
+          x = x + 1 # one right
+          while x <= arr[0].length-1
+              if arr[y][x] == "G"
+                  count+=1
+              else
+                  break # B found
+              end
+              x+=1
+          end
+      else         # left
+          x = x - 1 # one right
+          while x >= 0
+              if arr[y][x] == "G"
+                  count+=1
+              else
+                  break # B found
+              end
+              x-=1
+          end
+      end
+      count
+      end
+
+
+
+      s = gets.strip # remove the first line
+      ARGF.each_with_index do |line, idx|
+      arr[idx] = []
+      line.split("").each do |chr|
+          if chr == "G" || chr == "B"
+              arr[idx].push(chr)
+          end
+      end
+      end
+
+
+      #puts howMany(arr, 0, 4, 'down')
+
+      max_area = 1
+      # Assuming overlap is fine for now
+      #puts arr[0].length
+      #puts arr.length
+      for y in 0..(arr.length-1)
+      for x in 0..(arr[0].length-1)
+          if arr[y][x] == "B"
+              next
+          end
+          up = howMany(arr,y,x,'up')
+          down = howMany(arr,y,x,'down')
+          left = howMany(arr,y,x,'left')
+          right = howMany(arr,y,x,'right')
+          crossArmSizeLargest = [up, down, left, right].min  # min gives the size
+          for crossArmSize in 1..crossArmSizeLargest ## check for shorter arm sizes
+              arr_temp = Marshal.load(Marshal.dump(arr)) # Make a copy at each x, y for the x2, y2
+              for i in 0..crossArmSize
+                  arr_temp[y][x+i] = "B"
+                  arr_temp[y][x-i] = "B"
+                  arr_temp[y+i][x] = "B"
+                  arr_temp[y-i][x] = "B"
+              end
+              for y2 in 0..(arr.length-1)
+                  for x2 in 0..(arr[0].length-1)
+                      if y2 == y && x2 == x
+                          next
+                      end
+                      if arr[y2][x2] == "B"
+                          next
+                      end
+                      up2 = howMany(arr_temp,y2,x2,'up')
+                      down2 = howMany(arr_temp,y2,x2,'down')
+                      left2 = howMany(arr_temp,y2,x2,'left')
+                      right2 = howMany(arr_temp,y2,x2,'right')
+                      crossArmSize2 = [up2, down2, left2, right2].min  # min gives the size
+                      area = ((crossArmSize2*4) + 1) * ((crossArmSize*4) + 1)
+                      if area > max_area
+                          max_area = area
+                      end
+                  end
+              end
+          end
+      end
+      end
+
+      puts max_area
+
+## Day of the Programmer
+
+Find the 256th day of the year in Russia.  The calendar changed in 1918.
+
+[Explanation here](https://www.hackerrank.com/challenges/day-of-the-programmer/problem)
+
+      #!/bin/ruby
+
+      def cumulative_days_at_end_of_month()
+          jan = 31
+          feb_leap = 29
+          feb_non_leap = 28
+          mar = 31
+          apr = 30
+          may = 31
+          jun = 30
+          jul = 31
+          aug = 31
+          sep = 30
+
+          months = []
+          months.push(jan,feb_leap,mar,apr,may,jun,jul,aug,sep)
+          sum = 0
+          for month in months
+              sum = sum + month
+              puts sum
+          end
+
+
+      end
+
+      def solve(year)
+          #find 256 day on leap year, non-leap year, and 1918.
+              # 30 days hath September, April, June, and November.
+          # The 256 day is in the month of september
+          sep_day_on_leap_year_for_256th_day = 12
+          sep_day_on_non_leap_year_for_256th_day = 13
+          sep_day_on_1918 = 26
+
+
+          #find out if it is a leap year
+          if year < 1918
+              leap_year = ((year % 4) == 0) # true or false
+          else # not doing elsif because this is easier to read
+              if (year % 400) == 0
+                  leap_year = true
+              elsif (year % 4) == 0 && (year % 100) != 0
+                  leap_year = true
+              else
+                  leap_year = false
+              end
+          end
+
+          day = 0
+          if year == 1918
+              day = sep_day_on_1918
+          elsif leap_year
+              day = sep_day_on_leap_year_for_256th_day
+          else
+              day = sep_day_on_non_leap_year_for_256th_day
+          end
+
+          return "" + day.to_s + ".09." + year.to_s
+      end
+
+      year = gets.strip.to_i
+      result = solve(year)
+      #cumulative_days_at_end_of_month()
+      puts result;
+
+
+  ## Sherlock and the Valid String
+
+  [Explanation here](https://www.hackerrank.com/challenges/sherlock-and-valid-string/problem)
+
+        #!/bin/ruby
+
+        def isValid(s)
+            # Complete this function
+            hashes = Hash.new(0)
+
+            for i in 0..(s.length-1)
+                if hashes.has_key?(s[i])
+                    hashes[s[i]] = hashes[s[i]] + 1
+                else
+                    hashes[s[i]] = 1
+                end
+            end
+            #Get a sorted hash
+            hash_sorted = hashes.sort_by{|k,v| v}.to_h
+
+            chances = 1
+            i = 0
+            prev = 0
+            matches_before_chance = 0
+            matches_after_chance = 0
+            hash_sorted.each do |key, value|
+                # first iteration
+                if i == 0 # do nothing
+                elsif value == prev
+                    if chances == 1
+                        matches_before_chance += 1
+                    else
+                        matches_after_chance += 1
+                    end
+                elsif (prev == 1 && i == 1) || ((value-prev).abs <= 1)  # prev = 1 allowed as a chance if i == 2
+                    chances -= 1
+                else
+                    chances = -1 # fails
+                    break
+                end
+                i+=1
+                #keep track of previous
+                prev = value
+            end
+
+            if (chances >= 0 && (matches_before_chance == 0 || matches_after_chance == 0))
+                "YES"
+            else
+                "NO"
+            end
+        end
+
+        s = gets.strip
+        result = isValid(s)
+        puts result;

@@ -1,0 +1,24 @@
+<!-- Top nav Title.  Changes based on top nav choice -->
+<div class="card">
+  <div id="title"><h1>Algorithm Problems</h1>
+
+  </div>
+</div>
+
+<!-- Float left nav -->
+<div id="left-nav"></div>
+<!-- Float right nav -->
+<div id="right-nav"></div>
+<!-- Main content -->
+
+<div id="main-content">
+<!-- <h2></h2> -->
+  <div class="container">
+  <!-- Hacker Rank -->
+  <%=
+  text_f = open("app/views/articles/hacker_rank.txt")
+  text = text_f.read
+  markdown(text) %>
+</div>
+
+</div>

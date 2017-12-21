@@ -1,0 +1,33 @@
+<!-- Top nav Title.  Changes based on top nav choice -->
+<div class="card">
+  <div id="title"><h1>Contact</h1></div>
+</div>
+<!-- Float left nav -->
+<div id="left-nav"></div>
+<!-- Float right nav -->
+<div id="right-nav"></div>
+<!-- Main content -->
+<div id="main-content">
+  <div class="container">
+    <div class="center">
+      <p>Peter J. Myers</p>
+      <p>peterjmyers1@gmail.com</p>
+      <p><a href="http://www.easyrubyonrails.club">My Blog</a></p>
+      <p><a href="http://github.com/Peter-32">GitHub</a></p>
+
+
+
+      <h4>Blog Subscription:</h4>
+  <%= form_for :user, url: user_path do |f| %>
+    <%= f.text_field :name, placeholder: "First Name" %><br />
+    <%= f.text_field :email, placeholder: "Email" %><br />
+    <%= f.submit "Sign Me Up!" %>
+  <% end %>
+
+
+
+
+
+  </div>
+  </div>
+</div>

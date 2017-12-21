@@ -1,0 +1,41 @@
+<!-- Top nav Title.  Changes based on top nav choice -->
+<div class="card">
+  <div id="title"><h1>Projects</h1></div>
+</div>
+<!-- Float left nav -->
+<div id="left-nav"></div>
+<!-- Float right nav -->
+<div id="right-nav"></div>
+<!-- Main content -->
+<div id="main-content">
+  <div class="container">
+
+    <p><a href="https://peter-32.github.io/">Memory Palace App</a> - An interactive app that
+    helps one memorize 170 of Jesus' commandments forwards, backwards, and by position.</p>
+
+    <p><%= link_to "Create a Network", network_path %> - An interactive network plot that
+      serves as a reminder of some tools at our disposal when working on a website.</p>
+
+    <p><%= link_to "Reddit Copy", "https://peterredditclone.herokuapp.com/pages" %> - A place to contribute and read posts and comments.</p>
+
+    <p><%= link_to "Crosses with the Largest Area", crosses_largest_area_path %> - Randomly generate a grid and find the area of possible crosses on the green squares.  Find the two crosses in which their areas multiplied by each other is the largest.
+      take the product of their areas.
+    Can you find the right answer?</p>
+
+    <p><%= link_to "Scala or Java Network Plot", scala_java_network_path %> - Converts raw code written
+    in Scala or Java into a network plot so you can see the interactions between functions in
+    programs.</p>
+
+    <p><%= link_to "LoL Champion Recommender", champion_path %> - Recommends champions to use
+      in the game of LoL based on which three champion combination has the best average winrate
+      when in the position to counter-pick using three champions.</p>
+
+      <p><a href="https://htmlpreview.github.io/?https://github.com/Peter-32/Random-Quote-Generator/blob/master/index.html">Random Quote Generator</a> -
+        Shows one of several quotes randomly.  Will only repeat a quote once all quotes have shown up.</p>
+        
+    <p><%= link_to "Numbers", numbers_path %> - Projects related to numbers.</p>
+
+
+
+  </div>
+</div>

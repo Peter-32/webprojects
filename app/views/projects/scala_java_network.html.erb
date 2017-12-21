@@ -1,0 +1,36 @@
+<!-- Top nav Title.  Changes based on top nav choice -->
+<div class="card">
+  <div id="title"><h1>Projects</h1></div>
+</div>
+<!-- Float left nav -->
+<div id="left-nav"></div>
+<!-- Float right nav -->
+<div id="right-nav"></div>
+<!-- Main content -->
+<div id="main-content">
+  <div class="container">
+    <p>
+      Run these two commands to combine all scala files in a directory and remove the comment lines.
+      <br>find src/ -name '*.scala' -exec cat {} \; > uber.scala
+      <br>grep -v "^\s*//" uber.scala > uber2.scala
+    </p>
+    <p>
+      Converts raw code written
+      in Scala or Java into a network plot so you can see the interactions between functions in
+      programs.  This gives a high level view of the relationships between code blocks and objects.
+      Java currently isn't supported.
+    </p>
+    <label>Put Scala code in here:</label>
+    <textarea id="scala_code">
+      <!-- Default Scala code -->
+      <%=
+      text_f = open("app/views/projects/scala_java_network_example_scala_code.txt")
+      text = text_f.read
+      markdown(text) %>
+  </textarea>
+    <button id="button1">
+      Click me.
+    </button>
+  </div>
+  <div id="mynetwork" class="card"></div>
+</div>
